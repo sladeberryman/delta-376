@@ -26,19 +26,43 @@ $(document).ready(function() {
   
       return pigLatinName;
     }
+
+    // function to determine spirit animal
+    function getSpiritAnimal(name) {
+      const stringLength = name.length;
+    
+      if (stringLength <= 5) {
+        return "Lion";
+      } else if (stringLength <= 10) {
+        return "Eagle";
+      } else if (stringLength <= 15) {
+        return "Ox";
+      } else if (stringLength <= 20) {
+        return "Dove";
+      } else {
+        return "Lamb";
+      }
+    }
+
   
     // Function to convert the names to Pig Latin and display the greeting
     function configName() {
       var name = $("#nameInput").val();
       var pigLatinGreeting = convertToPigLatin(name); // Calls pig latin function
+      var spiritAnimal = getSpiritAnimal(name); // calls spirit animal function
   
-      // display confusing greeting
-      $("#result").text("ellohay " + pigLatinGreeting);
+      // display greeting
+      $("#pig-latin").text("Your name in Pig Latin:  " + pigLatinGreeting);
+      $("#spirit-animal").text("Your spirit animal: " + spiritAnimal);
     }
+
+
   
+
+
     // when they click submit
     $("#submit-btn").click(function(e) {
       e.preventDefault();
-      configName(); // Calls both functions
+      configName(); // Calls functions
     });
   });
